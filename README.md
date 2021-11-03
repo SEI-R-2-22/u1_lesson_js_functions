@@ -8,9 +8,7 @@ In this lesson, we'll learn all about functions in JavaScript.
 ## Objectives
   - Learn the definition of a function
   - Identify the parts of a function
-  - Differentiate between function expressions and declarations
-  - Introduce scope
-  - Discuss Hoisting
+  - Differentiate between function defintions and function invocations
 
 ## Lesson Instructions
 
@@ -76,7 +74,7 @@ This is all easy enough to write out, but if we have a lot of movies, this resul
 Let's try to keep our code from getting out of hand by using a function.
 
 ```js
-const printMovie = function(movie, year) {
+const printMovie = (movie, year) => {
   console.log(`${movie} was released in ${year}`);
 };
 
@@ -111,30 +109,24 @@ Our goal is to craft our programs in as few lines of code as possible, while sti
 
 ---
 
-## Function Expressions
+## Arrow Function Expressions
 
 Now we know what functions are and why we use them. But how do we create them?
 
 As you saw in our movie example, just as we do with a variable, we must define a function before we call or "use" it.
 
-In JS, functions can be defined in several ways. Two of the more common methods of defining a function are:
- - **function expression**
- - **function declaration**.
+In JS, functions can be defined in several ways. We will be focusing on using **arrow function expressions**
 
 #### Function Expressions - Overview
 
-Let's take a look at **function expressions** first.
-
-A **function expression** defines a function by producing a value that's stored in a variable.
-
-This is similar to the way an expression produces a value that's stored in a variable—hence its name.
+Let's take a look at the different parts of the arrow function:
 
 ```js
-const pickADescriptiveName = function() {
+const pickADescriptiveName = () => {
   // code block
 }
 // 'pickADescriptiveName' is the function name
-// 'function' is the keyword that declares a function
+// the parenthesis and arrow are short hand for the declaration of a function...also known as an arrow function
 // parentheses are needed and can have optional, multiple parameters, or defualt parameters
 ```
 
@@ -143,7 +135,7 @@ Have you ever tried to move forward to the next page of an online form, only to 
 This kind of code can be placed in a function and this function can be called anytime the user hasn't filled out a field on any form on the site. Let's code for this popup alert using a function expression:
 
 ```js
-const errorAlert = function() {
+const errorAlert = () => {
   alert('Please be sure to fill out all required fields');
 }
 ```
@@ -151,13 +143,12 @@ const errorAlert = function() {
 Let's take a look at the function in more detail:
 
 1.  The first line begins by declaring a variable called `errorAlert`. This is the name that we can then use to call that function.
-2.  This is followed by the word `function`, which is a keyword we use to let JS know that we are creating a function.
-3.  Next, you have a list of parameters surrounded by parentheses. Even though the parameters that can go within the parentheses are optional, the parentheses themselves are _always_ required.
-4.  The statements inside the function will run every time the function is called. The function body must always be wrapped in curly braces `{ }`, even when it consists of only a single statement.
+2.  Next, you have a list of parameters surrounded by parentheses.  In a very specific case you can omit the parenthesis, however, we suggest that you include the parentheses as you are gaining familiarity with functions.
+3.  The statements inside the function will run every time the function is called. The function body must always be wrapped in curly braces `{ }`, even when it consists of only a single statement. **NOTE** that there is an exception to this rule as well, however, we will still encourage you to always use curly braces as you are getting comfortable with functions.
 
 #### Naming Conventions
 
-Now that we've learned about function expressions, let's discuss naming conventions.
+Now that we've learned about arrow functions, let's discuss naming conventions.
 
 You may have noticed how we capitalize names in JavaScript using the camelCase style.
 
@@ -202,7 +193,7 @@ Let's write a function that calculates the area of a rectangle.
 We need to provide our `area` function with a width and a length so we won't need to create a separate function every time we want to measure the dimensions of a new room.
 
 ```js
-const area = function(width, length) {
+const area = (width, length) => {
   console.log(width * length);
 }
 
@@ -222,7 +213,7 @@ e.g., (parameter1, parameter2, parameter3, parameter4, etc.)
 Here is an example of a function with four strings as parameters:
 
 ```js
-const greetUser = function(firstName, lastName, year, city) {
+const greetUser = (firstName, lastName, year, city) => {
   console.log(`Hello ${firstName} ${lastName}, I was born in ${year} and I'm from ${city}.`)
 }
 ```
@@ -284,9 +275,11 @@ const students = [
 
 ### Return Statements
 
-We now know how to communicate with functions in one direction, by passing values to functions using parameters and arguments.
+So far, the functions that we have created have simply printed the result of whatever logic we have defined to operate in the function.  
 
-But, functions can also communicate back to you and return values.
+However, we might want our functions to _return_ a value back to our program or even exit a function before it runs some logic.
+
+We can accomplish these tasks by using the `return` keyword inside of our function definitions.
 
 #### Why use return statements?
 
@@ -299,7 +292,7 @@ To do this, we use `return` statement.
 Let's look at an example of updating a variable within a function.
 
 ```js
-const doubleValue = function(x) {
+const doubleValue = (x) => {
   return x * 2;
 };
 ```
@@ -319,7 +312,7 @@ We can also use `return;` by itself as a way to stop the function and prevent an
 Take a look at this example:
 
 ```js
-const rockAndRoll = function(muted) {
+const rockAndRoll = (muted) => {
   const song = 'Yellow Submarine';
   const artist = 'The Beatles';
 
@@ -342,99 +335,6 @@ So when we call the function passing in `true` as an argument for `muted`, the l
 How can we modify our area function to return our value instead of printing it?
 
 ---
-
-
-### Function Declarations
-
-Now we'll take a look at another way to define functions (**function declarations**) and how these differ from the function expressions we've been using.
-
-Watch this short [video](https://generalassembly.wistia.com/medias/g1w03wkvth) for an overview of Function Declarations and Function Expressions.
-
-#### Function Declarations vs. Function Expressions
-
-Remember the `printMovie()` function?
-
-Let's take a look at how we could rewrite that function by changing the way we declare the function (the bottom example).
-
-```js
-const printMovie = function(movie, year) {
-  console.log(`${movie} was released in ${year}`);
-};
-```
-
-vs
-
-```js
-function printMovie(movie, year) {
-  console.log(`${movie} was released in ${year}`);
-}
-```
-
-Both functions do the exact same thing, they're just written differently. We'll take a look at the difference between the two in just a few minutes.
-
-#### Syntax
-
-As you can see, a function declaration always has:
-
-- The keyword `function`.
-- A descriptive name that refers to the function (this can be anything you want, as long as it's in camelCase).
-- An optional list of parameters surrounded by parentheses.
-
-```js
-function pickADescriptiveName() {
-  // code block
-}
-```
-
-What's the difference between them? It all comes down to **scope** and **hoisting**.
-
-You can find more information about function expressions and function declarations [**here**](https://www.freecodecamp.org/news/when-to-use-a-function-declarations-vs-a-function-expression-70f15152a0a0/).
-
-![Globe](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.zmescience.com%2Fwp-content%2Fuploads%2F2017%2F05%2Fgiphy.gif&f=1&nofb=1)
-
-#### Scope
-
-Scope is the space of computer memory where any given variable lives.
-
-If I define a variable _globally,_ that is to say, outside of any function, my entire program (and any functions I write in it) have access to that variable, and any function I write can manipulate it.
-
-However, scope only flows _downward._ That is to say, functions can only see variables that have been defined within their scope or above them, so trying to access a variable defined in one function by calling another will throw an un error
-
-#### Hoisting
-
-Right now, let's dive deeper into the differences between function declarations and function expressions. While both methods are similar, one of their main differences is the concept of **hoisting**.
-
-In JS, function declarations are always moved, or "hoisted," to the top of their scope by the interpreter. (Remember, the interpreter is the console in JS — the software that runs the code).
-
-In other words, _you can call a function declaration before defining it_.
-
-Let's look at an example of hoisting:
-
-```js
-sayHello()
-
-const sayHello = function() {
-  console.log('hey')
-}
-
-// ERROR: What's sayHello??
-```
-
-```js
-sayHello()
-
-function sayHello() {
-  console.log('hey')
-}
-
-// works great!!
-```
-
-Function expressions must be defined before they are called. The function is not processed until the interpreter gets to that statement. We have to wait for the interpreter to reach that line, otherwise we will get an error.
-
-### First-class citizens!
-
-Functions in JavaScript are often referred to as 'first-class citizens'. What that means, essentially, is that anything you can do to regular values and datatypes, you can do to functions.
 
 ## Lesson Recap
 
