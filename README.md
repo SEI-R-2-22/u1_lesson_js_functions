@@ -47,6 +47,9 @@ In JavaScript, a function can be:
 
 Functions are especially useful because they enable a developer to segment large, unwieldy applications into smaller, more manageable pieces. You might hear this described as making the code modular. Modularity is good.
 
+
+For today, we'll run some simple functions, like basic math equations and some string interpolation. But every time you Log In to a website, Like a post on Facebook, add an item to your cart on Amazon, or anything else we do across the web, we are working with Functions. We're going to start off simple, but like those CSS properties, you will be amazed at how complex and powerful the functions you write in the coming weeks will be
+
 #### Example of using a function
 
 Here's an example of what a function can do:
